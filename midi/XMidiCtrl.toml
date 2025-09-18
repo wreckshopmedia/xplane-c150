@@ -1,0 +1,66 @@
+title = "Stream Deck+ for vFlyteAir Cessna 150 Commuter"
+version = "0.1"
+author = "Chris 'Mo' Mochinski (Wreck Shop Media LLC)"
+
+# index via Plugins → XMidiCtrl → Show MIDI Devices
+[[device]]
+name = "Stream Deck IAC"
+port_in = 0
+port_out = 1
+
+mapping_in = [
+
+  # -------------------- PAGE 1 - COM/NAV (standby tune + flip) -------------------- #
+  # ----------- NOTE: instances of "standy" are legit - possible XP goof ----------- #
+
+  # KNOB 1 → COM1 STBY
+  { ch = 1, cc = 1, type = "enc", command_up = "sim/radios/stby_com1_fine_down", command_down = "sim/radios/stby_com1_fine_up" },
+  { ch = 1, cc = 2, type = "enc", command_up = "sim/radios/stby_com1_coarse_down", command_down = "sim/radios/stby_com1_coarse_up" },
+  { ch = 1, cc = 3, type = "cmd", command = "sim/radios/com1_standy_flip" },
+
+
+  # KNOB 2 → NAV1 STBY
+  { ch = 1, cc = 4, type = "enc", command_up = "sim/radios/stby_nav1_fine_down", command_down = "sim/radios/stby_nav1_fine_up" },
+  { ch = 1, cc = 5, type = "enc", command_up = "sim/radios/stby_nav1_coarse_down", command_down = "sim/radios/stby_nav1_coarse_up" },
+  { ch = 1, cc = 6, type = "cmd", command = "sim/radios/nav1_standy_flip" },
+
+
+  # KNOB 3 → COM2 STBY (optional; comment out if you don’t use COM2)
+  { ch = 1, cc = 7, type = "enc", command_up = "sim/radios/stby_com2_fine_down", command_down = "sim/radios/stby_com2_fine_up" },
+  { ch = 1, cc = 8, type = "enc", command_up = "sim/radios/stby_com2_coarse_down", command_down = "sim/radios/stby_com2_coarse_up" },
+  { ch = 1, cc = 9, type = "cmd", command = "sim/radios/com2_standy_flip" },
+
+  # KNOB 4 → NAV2 STBY (optional)
+  { ch = 1, cc = 10, type = "enc", command_up = "sim/radios/stby_nav2_fine_down", command_down = "sim/radios/stby_nav2_fine_up" },
+  { ch = 1, cc = 11, type = "enc", command_up = "sim/radios/stby_nav2_coarse_down", command_down = "sim/radios/stby_nav2_coarse_up" },
+  { ch = 1, cc = 12, type = "cmd", command = "sim/radios/nav2_standy_flip" },
+
+  # -------------------- PAGE 2 - STEAM GAUGES / ENGINE -------------------- #
+
+  { ch = 1, cc = 28, type = "enc", command_up = "sim/instruments/DG_sync_up", command_down = "sim/instruments/DG_sync_down" },
+  { ch = 1, cc = 29, type = "enc", command_up = "sim/autopilot/heading_down", command_down = "sim/autopilot/heading_up" },
+  { ch = 1, cc = 30, type = "enc", command_up = "sim/instruments/barometer_down", command_down = "sim/instruments/barometer_up" },
+
+  # Carb heat + primer (C150 essentials). If the plane uses custom commands, swap these later.
+  { ch = 1, cc = 31, type = "cmd", command = "sim/engines/carb_heat_toggle" },
+  # { ch = 1, cc = 32, type = "cmd", command = "sim/engines/primer" },           # press multiple times for strokes
+  { ch = 1, cc = 32, type = "cmd", command = "sim/operation/slider_19" }, # press multiple times for strokes
+
+  # ------------------------------------------------------------------------- #
+  # ------------------- PAGE 3 - TRANSPONDER (KNOB STYLE) ------------------- #
+  # ------------------------------------------------------------------------- #
+
+  # WHEEL TURNS = each digit (left→right): thousands, hundreds, tens, ones
+  { ch = 1, cc = 16, type = "enc", command_up = "sim/transponder/transponder_thousands_down", command_down = "sim/transponder/transponder_thousands_up" },
+  { ch = 1, cc = 17, type = "enc", command_up = "sim/transponder/transponder_hundreds_down", command_down = "sim/transponder/transponder_hundreds_up" },
+  { ch = 1, cc = 18, type = "enc", command_up = "sim/transponder/transponder_tens_down", command_down = "sim/transponder/transponder_tens_up" },
+  { ch = 1, cc = 19, type = "enc", command_up = "sim/transponder/transponder_ones_down", command_down = "sim/transponder/transponder_ones_up" },
+
+  # WHEEL PRESSES (left→right): OFF, STBY, ON, IDENT
+  # Set your Stream Deck so each wheel press sends CC 20/21/22/23 respectively.
+  { ch = 1, cc = 20, type = "cmd", command = "sim/transponder/transponder_off" },
+  { ch = 1, cc = 21, type = "cmd", command = "sim/transponder/transponder_standby" },
+  { ch = 1, cc = 22, type = "cmd", command = "sim/transponder/transponder_on" },
+  { ch = 1, cc = 23, type = "cmd", command = "sim/transponder/transponder_ident" },
+
+]
