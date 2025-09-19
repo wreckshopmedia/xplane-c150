@@ -21,6 +21,18 @@ mapping_in = [
   # { ch = 1, cc = 33, type = "cmd", command = "wreckshop/c150/preflight_toggle_all" },
 
 
+  # ------------------------ HACK TOOLS ??? ------------------------ #
+
+
+  # Tools (page / row as you like)
+  { ch = 1, cc = 36, type = "cmd", command = "wreckshop/tools/drt_search" },
+  { ch = 1, cc = 37, type = "cmd", command = "wreckshop/tools/xmc_log" },
+  # add if you want:
+  # { ch = 1, cc = 38, type = "cmd", command = "wreckshop/tools/xmc_watcher" },
+  # { ch = 1, cc = 39, type = "cmd", command = "wreckshop/tools/xmc_reload" },
+
+
+  # --------------------------------------------------------------- #
 
 
   # gauge dials - gyro, hdg bug, altimeter
@@ -31,7 +43,7 @@ mapping_in = [
 
   # Carb heat + primer (C150 essentials). If the plane uses custom commands, swap these later.
   { ch = 1, cc = 31, type = "cmd", command = "sim/engines/carb_heat_toggle" },
-  { ch = 1, cc = 32, type = "cmd", command = "sim/operation/slider_19" }, # press multiple times for strokes
+  { ch = 1, cc = 32, type = "cmd", command = "sim/operation/slider_19" },      # press multiple times for strokes
 
   # -------------------- PAGE 2 - COM/NAV (standby tune + flip) -------------------- #
   # ----------- NOTE: instances of "standy" are legit - possible XP goof ----------- #

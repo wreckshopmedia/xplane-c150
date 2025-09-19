@@ -1,41 +1,38 @@
---[[ ============================================
-Mo's vFlytewAir Cessna 150
-FlyWithLua Script
-Version 1.0
-By Chris "Mo" Mochinski c/o Wreck Shop Media LLC
-wreckshopmedia.com
-For use with X-Plane 12 and FlyWithLua
-github.com/wreckshopmedia/xplane-c150
-============================================ ]]
+--[[ ===============================================================
+        Mo's vFlytewAir Cessna 150
+        FlyWithLua Script
+        Version 1.0
+        By Chris "Mo" Mochinski c/o Wreck Shop Media LLC
+        wreckshopmedia.com
+        For use with X-Plane 12 and FlyWithLua
+        github.com/wreckshopmedia/xplane-c150
+================================================================== ]]
 
---------------------------------------------------------
---------------------------------------------------------
+--------------------------------------------------------------------
 -- DataRefs (esp ones not avail for for controllers)
---------------------------------------------------------
---------------------------------------------------------
+--------------------------------------------------------------------
 
--- ==== LIGHTS ====
+-- ============================ LIGHTS =============================
 
 -- "dome light" is sim/cockpit/electrical/cockpit_light (DataRefTool)
 dataref("dome_light", "sim/cockpit/electrical/cockpit_lights", "writable")
 
 
 create_command("wreckshop/c150/dome_light_on",
-"Dome Light On",
-"dome_light = 1", "", "")
+  "Dome Light On",
+  "dome_light = 1", "", "")
 
 create_command("wreckshop/c150/dome_light_off",
-"Dome Light Off",
-"dome_light = 0", "", "")
+  "Dome Light Off",
+  "dome_light = 0", "", "")
 
 create_command("wreckshop/c150/dome_light_toggle",
   "Toggle Dome Light",
   "dome_light = 1 - dome_light", "", "")
 
--- ! TO DO - add more
 
--- ==== PREFLIGHT / GROUND EQUIPMENT ====
--- preflight removals (chocks, covers, tie-downs, etc - HIDE = 1, show = 0)
+
+-- ===================== PREFLIGHT / GROUND EQUIPMENT =====================
 
 -- nose wheel chocks
 dataref("chocks_nose", "VFLYTEAIR/C150/options/HIDEWheelChocksNose", "writable")
@@ -203,23 +200,6 @@ create_command("wreckshop/c150/preflight_toggle_all",
   "chocks_nose = 1 - chocks_nose; chocks_port = 1 - chocks_port; chocks_starboard = 1 - chocks_starboard; cowlplugs = 1 - cowlplugs; groundelements = 1 - groundelements; pitotcover = 1 - pitotcover; tarp = 1 - tarp; tiedownleftwing = 1 - tiedownleftwing; tiedownrightwing = 1 - tiedownrightwing; tiedowntail = 1 - tiedowntail",
   "", "")
 
---   create_command("wreckshop/c150/preflight_toggle_all",
---   "Toggle all preflight items",
---   [[
---     chocks_nose       = 1 - chocks_nose
---     chocks_port       = 1 - chocks_port
---     chocks_stbd       = 1 - chocks_stbd
---     cowlplugs         = 1 - cowlplugs
---     groundelements    = 1 - groundelements
---     pitotcover        = 1 - pitotcover
---     tarp              = 1 - tarp
---     tiedownleftwing   = 1 - tiedownleftwing
---     tiedownrightwing  = 1 - tiedownrightwing
---     tiedowntail       = 1 - tiedowntail
---   ]],
---   "",
---   ""
--- )
 
 create_command("wreckshop/c150/preflight_hide_all",
   "Hide all preflight items",
@@ -232,3 +212,39 @@ create_command("wreckshop/c150/preflight_show_all",
   "", "")
 
 -- ==== OTHER ====
+
+
+
+
+
+
+-- ==================== DEBUG / LUA / ETC ====================
+
+
+-- ===================== PREFLIGHT / GROUND EQUIPMENT =====================
+
+-- ==== TOOLS / WINDOWS (one-shot wrappers) ====
+
+-- DataRefTool: open a new search window
+create_command("wreckshop/tools/drt_search",
+  "Open DRT Search Window",
+  [[ command_once("leecbaker/datareftool/new_search_window") ]],
+  "", "")
+
+-- XMidiCtrl: open Log Viewer
+create_command("wreckshop/tools/xmc_log",
+  "Open XMidiCtrl Log Viewer",
+  [[ command_once("xmidictrl/show_log_viewer") ]],
+  "", "")
+
+-- XMidiCtrl: open MIDI Watcher
+create_command("wreckshop/tools/xmc_watcher",
+  "Open XMidiCtrl MIDI Watcher",
+  [[ command_once("xmidictrl/show_midi_watcher") ]],
+  "", "")
+
+-- (optional) reload XMidiCtrl profile
+create_command("wreckshop/tools/xmc_reload",
+  "Reload XMidiCtrl profile",
+  [[ command_once("xmidictrl/reload_profile") ]],
+  "", "")
